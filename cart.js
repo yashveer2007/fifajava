@@ -64,7 +64,7 @@ function renderSummary() {
 
         const priceEl = document.createElement("span");
         priceEl.className   = "cp-item-price";
-        priceEl.textContent = formatPrice(item.basePrice * item.qty);
+        priceEl.textContent = formatPrice(item.price * item.qty);
         priceCol.appendChild(priceEl);
 
         row.appendChild(priceCol);
@@ -73,7 +73,7 @@ function renderSummary() {
 
     
     const total = cartItems.reduce(function(sum, item) {
-        return sum + item.basePrice * item.qty;
+        return sum + item.price * item.qty;
     }, 0);
 
     cpTotalAmount.textContent = formatPrice(total);

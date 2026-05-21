@@ -4,10 +4,16 @@ if (history.scrollRestoration) {
 
  {
     let mbtn = document.getElementById("mbtn")
+    let logo = document.getElementById("logo")
+    let logospan = document.getElementById("logospan")
 
-    mbtn.onclick = function() {
-        location.href = "#menuheader";
+    function goToMainPage() {
+        window.scrollTo({ top: 0, behavior: "smooth" });
     }
+
+    mbtn.onclick = goToMainPage;
+    logo.style.cursor = "pointer";
+    logospan.addEventListener("click", goToMainPage);
 }
 
  {
@@ -585,7 +591,8 @@ function buildModal(productId) {
     const product = window.PRODUCTS[productId];
     if (!product) return null;
 
-    let qty = 1;   
+    let qty = 1;
+    let sizeMultiplier = 1;   
 
     const frag = document.createDocumentFragment();
 
@@ -637,6 +644,7 @@ function buildModal(productId) {
             const sizeBtn = document.createElement("button");
             sizeBtn.className   = "modal-size-btn" + (index === 0 ? " selected" : "");
             sizeBtn.textContent = size;
+            sizeBtn.dataset.multiplier = index === 0 ? 1 : index === 1 ? 1.5 : 2;
 
             sizeBtn.addEventListener("click", function(e) {
                 e.stopPropagation();
@@ -644,6 +652,8 @@ function buildModal(productId) {
                     b.classList.remove("selected");
                 });
                 sizeBtn.classList.add("selected");
+                sizeMultiplier = parseFloat(sizeBtn.dataset.multiplier);
+                updatePriceDisplay();
             });
 
             sizeRow.appendChild(sizeBtn);
@@ -663,6 +673,19 @@ function buildModal(productId) {
     priceEl.dataset.price  = product.price;
     priceEl.textContent    = `₹${product.price}`;
     bottomBar.appendChild(priceEl);
+
+    
+    function updatePriceDisplay() {
+        const newPrice = product.price * sizeMultiplier;
+        priceEl.dataset.price = newPrice;
+        
+        const locText = document.getElementById("locationbtn").textContent || "";
+        const isUSD = locText.includes("USA");
+        const exrate = 91.94;
+        const symbol = isUSD ? "$" : "₹";
+        const displayPrice = isUSD ? (newPrice / exrate).toFixed(2) : newPrice;
+        priceEl.textContent = symbol + displayPrice;
+    }
 
     
     const qtyRow = document.createElement("div");
@@ -713,6 +736,15 @@ function buildModal(productId) {
         const chosenSize = selectedSizeBtn ? selectedSizeBtn.textContent : product.sizes[0];
 
         window.addToCart(productId, qty, chosenSize);
+        
+        // Close the modal after adding
+        closeAllModals();
+        
+        // Reset button state after brief delay so user sees "ADDED ✓"
+        setTimeout(function() {
+            atcBtn.classList.remove("added");
+            atcBtn.textContent = "ADD TO CART";
+        }, 600);
     });
 
     bottomBar.appendChild(atcBtn);
@@ -765,6 +797,7 @@ document.querySelectorAll('.productbtn').forEach(function(btn) {
 });
 
 document.addEventListener('click', function(e) {
+    if (e.target.closest('#cart')) return;
     if (e.target.closest('#signinmodalcontainer')) return;
     if (!e.target.closest('.productdiv') && !e.target.closest('.productbtn')) {
         closeAllModals();
@@ -949,7 +982,7 @@ document.addEventListener('click', function(e) {
     
     function calcTotal() {
         return cartItems.reduce(function(sum, item) {
-            return sum + item.basePrice * item.qty;
+            return sum + item.price * item.qty;
         }, 0);
     }
 
@@ -1023,8 +1056,8 @@ document.addEventListener('click', function(e) {
 
             const priceEl = document.createElement("p");
             priceEl.className      = "price cart-item-price";
-            priceEl.dataset.price  = item.basePrice;
-            priceEl.textContent    = formatPrice(item.basePrice);
+            priceEl.dataset.price  = item.price;
+            priceEl.textContent    = formatPrice(item.price);
             info.appendChild(priceEl);
 
             row.appendChild(info);
@@ -1051,13 +1084,15 @@ document.addEventListener('click', function(e) {
             plusBtn.setAttribute("aria-label", "increase quantity");
 
             
-            minusBtn.addEventListener("click", function() {
+            minusBtn.addEventListener("click", function(e) {
+                e.stopPropagation();
                 if (cartItems[index].qty > 1) {
                     cartItems[index].qty--;
                     renderCart();
                 }
             });
-            plusBtn.addEventListener("click", function() {
+            plusBtn.addEventListener("click", function(e) {
+                e.stopPropagation();
                 cartItems[index].qty++;
                 renderCart();
             });
@@ -1080,7 +1115,8 @@ document.addEventListener('click', function(e) {
                 '16-16l0-224c0-8.8-7.2-16-16-16zm96 0c-8.8 0-16 7.2-16 16l0 224c0 8.8 7.2 ' +
                 '16 16 16s16-7.2 16-16l0-224c0-8.8-7.2-16-16-16z"/></svg>';
 
-            removeBtn.addEventListener("click", function() {
+            removeBtn.addEventListener("click", function(e) {
+                e.stopPropagation();
                 cartItems.splice(index, 1);
                 renderCart();
             });
@@ -1104,6 +1140,20 @@ document.addEventListener('click', function(e) {
         if (!product) return;
 
         
+        // Calculate size multiplier
+        let sizeMultiplier = 1;
+        if (product.sizes.length > 1) {
+            if (size === product.sizes[0]) {
+                sizeMultiplier = 1;        // Tall
+            } else if (size === product.sizes[1]) {
+                sizeMultiplier = 1.5;      // Grande
+            } else if (size === product.sizes[2]) {
+                sizeMultiplier = 2;        // Venti
+            }
+        }
+        
+        const finalPrice = product.price * sizeMultiplier;
+
         const existing = cartItems.find(function(item) {
             return item.id === productId && item.size === size;
         });
@@ -1117,6 +1167,7 @@ document.addEventListener('click', function(e) {
                 name:      product.name,
                 image:     product.image,
                 basePrice: product.price,
+                price:     finalPrice,
                 size:      size,
                 qty:       qty
             });
