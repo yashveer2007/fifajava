@@ -1,0 +1,333 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>JavaSip</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="images/favicon.png">
+</head>
+<body>
+    <header>
+
+        <span id="logospan">
+            <img id="logo" src="images/logo.png">
+        </span>
+
+        <div id="headerdiv">
+                
+            <nav id="links">
+                <button id="mbtn">MENU</button>
+            </nav>
+
+            <span id="otherlinks">
+                <span class="locationbutton">
+
+                    <span id="locationbtn" style="display: flex">
+                        <svg style="width: 20px; margin-bottom: 2px; margin-right: 5px; cursor: pointer" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.--><path d="M128 252.6C128 148.4 214 64 320 64C426 64 512 148.4 512 252.6C512 371.9 391.8 514.9 341.6 569.4C329.8 582.2 310.1 582.2 298.3 569.4C248.1 514.9 127.9 371.9 127.9 252.6zM320 320C355.3 320 384 291.3 384 256C384 220.7 355.3 192 320 192C284.7 192 256 220.7 256 256C256 291.3 284.7 320 320 320z"/></svg>
+                        <p style="cursor: pointer">Find a store</p>
+                    </span>
+
+                    <div id="locationdropdown">
+                        <button id="india">India</button>
+                        <button id="usa">USA</button>
+                    </div>
+                </span>
+                <span>
+                    <button id="signin">Sign In</button>
+                </span>
+
+                <span>
+                    <button id="searchicon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.--><path d="M480 272C480 317.9 465.1 360.3 440 394.7L566.6 521.4C579.1 533.9 579.1 554.2 566.6 566.7C554.1 579.2 533.8 579.2 521.3 566.7L394.7 440C360.3 465.1 317.9 480 272 480C157.1 480 64 386.9 64 272C64 157.1 157.1 64 272 64C386.9 64 480 157.1 480 272zM272 416C351.5 416 416 351.5 416 272C416 192.5 351.5 128 272 128C192.5 128 128 192.5 128 272C128 351.5 192.5 416 272 416z"/></svg>
+                    </button>
+                </span>
+                <span>
+                    <button id="carticon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><path d="M96 96L160 96L194.1 338.8C199.1 370.5 226.5 394 258.6 394L468 394C499.5 394 526.4 371.4 532.1 340.4L568.1 148.4C570.6 135 560.5 122 546.8 122L176 122M258.6 480C240.4 480 225.6 465.2 225.6 447C225.6 428.8 240.4 414 258.6 414C276.8 414 291.6 428.8 291.6 447C291.6 465.2 276.8 480 258.6 480zM468 480C449.8 480 435 465.2 435 447C435 428.8 449.8 414 468 414C486.2 414 501 428.8 501 447C501 465.2 486.2 480 468 480z"/></svg>
+                        <span id="cart-header-count"></span>
+                    </button>
+                </span>
+            </span>
+
+        </div>
+    </header>
+
+    <div id="signinmodalcontainer">
+        <div id="signinmodal">
+
+            <div id="signinmodalheader">
+                <h2 style="margin-left: 20px">JAVASIP</h2>
+                <button id="signinmodalclosebtn">
+                    X
+                </button>
+            </div>
+
+            <div id="signinformoptionbuttonsdiv">
+
+                <div id="signinformoptionbuttons">
+                    <button id="sibutton">SIGN IN</button><button id="joinbutton">JOIN</button>
+                </div>
+
+            </div>
+
+<div id="forms">
+
+    <form id="signinform">
+
+        <label for="si-email" class="e-p-label">EMAIL</label>
+        <input type="email" id="si-email" placeholder="Email" class="typeinput1">
+        <br><br>
+        <label for="si-password" class="e-p-label">PASSWORD</label>
+        <input type="password" id="si-password" placeholder="Password" class="typeinput1">
+
+        <p class="termsreminder" style="padding-right: 32px; padding-left: 32px; margin-top: 20px; margin-bottom: 8px">By clicking "Sign In" I agree to the Terms and Conditions & Privacy Policy. I also consent to the collection and use of my Personal Information as described in the Notice regarding Loyalty Programs.</p>
+
+        <p class="form-error" id="si-error"></p>
+
+        <button type="submit" id="sisubmitbtn" disabled>SIGN IN</button>
+
+        <br><br>
+
+        <div style="text-align: left; padding-left: 32px; display: flex">
+            <input type="checkbox" id="si-remember" style="cursor: pointer; width: 18px; height: 18px">
+            <p class="rememberme">Remember me</p>
+            <svg style="width: 22px; margin-bottom: 13px; margin-left: 3px; cursor: pointer" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><path d="M320 576C461.4 576 576 461.4 576 320C576 178.6 461.4 64 320 64C178.6 64 64 178.6 64 320C64 461.4 178.6 576 320 576zM288 224C288 206.3 302.3 192 320 192C337.7 192 352 206.3 352 224C352 241.7 337.7 256 320 256C302.3 256 288 241.7 288 224zM280 288L328 288C341.3 288 352 298.7 352 312L352 400L360 400C373.3 400 384 410.7 384 424C384 437.3 373.3 448 360 448L280 448C266.7 448 256 437.3 256 424C256 410.7 266.7 400 280 400L304 400L304 336L280 336C266.7 336 256 325.3 256 312C256 298.7 266.7 288 280 288z"/></svg>
+        </div>
+
+    </form>
+
+    <form id="joinform">
+
+        <div style="display: flex; justify-content: space-between; padding-left: 32px; padding-right: 32px; padding-top: 5px; padding-bottom: 15px; box-sizing: border-box">
+            <span>
+                <label for="join-firstname" class="fn-ln-label">FIRST NAME</label>
+                <input type="text" id="join-firstname" placeholder="First Name" class="nametypeinput">
+            </span>
+            <span>
+                <label for="join-lastname" class="fn-ln-label">LAST NAME</label>
+                <input type="text" id="join-lastname" placeholder="Last Name" class="nametypeinput" style="width: 194.4px">
+            </span>
+        </div>
+
+        <label for="join-email" class="e-p-label">EMAIL</label>
+        <input type="email" id="join-email" placeholder="Email" class="typeinput2" style="margin-bottom: 20px">
+        <br>
+        <label for="join-password" class="e-p-label">PASSWORD</label>
+        <input type="password" id="join-password" placeholder="Password (8+ chars, include a number)" class="typeinput2">
+
+        <p class="termsreminder" style="padding-right: 32px; padding-left: 32px; margin-top: 16px; margin-bottom: 8px">By clicking "Join" I agree to the Terms and Conditions & Privacy Policy. I also consent to the collection and use of my Personal Information as described in the Notice regarding Loyalty Programs.</p>
+
+        <p class="form-error" id="join-error"></p>
+
+        <button type="submit" id="joinsubmitbtn" disabled>JOIN</button>
+
+        <br><br>
+
+        <div style="text-align: left; padding-left: 32px; display: flex">
+            <input type="checkbox" style="cursor: pointer; width: 18px; height: 18px">
+            <p class="rememberme">Remember me</p>
+            <svg style="width: 22px; margin-bottom: 13px; margin-left: 3px; cursor: pointer" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><path d="M320 576C461.4 576 576 461.4 576 320C576 178.6 461.4 64 320 64C178.6 64 64 178.6 64 320C64 461.4 178.6 576 320 576zM288 224C288 206.3 302.3 192 320 192C337.7 192 352 206.3 352 224C352 241.7 337.7 256 320 256C302.3 256 288 241.7 288 224zM280 288L328 288C341.3 288 352 298.7 352 312L352 400L360 400C373.3 400 384 410.7 384 424C384 437.3 373.3 448 360 448L280 448C266.7 448 256 437.3 256 424C256 410.7 266.7 400 280 400L304 400L304 336L280 336C266.7 336 256 325.3 256 312C256 298.7 266.7 288 280 288z"/></svg>
+        </div>
+
+    </form>
+
+</div>
+            
+        </div>
+    </div>
+
+    <div id="searchmodalcontainer">
+        <div id="searchmodal">
+
+            <div id="searchinputdiv">
+                <svg style="width: 28px; margin-right: 10px; margin-bottom: 3px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><path d="M480 272C480 317.9 465.1 360.3 440 394.7L566.6 521.4C579.1 533.9 579.1 554.2 566.6 566.7C554.1 579.2 533.8 579.2 521.3 566.7L394.7 440C360.3 465.1 317.9 480 272 480C157.1 480 64 386.9 64 272C64 157.1 157.1 64 272 64C386.9 64 480 157.1 480 272zM272 416C351.5 416 416 351.5 416 272C416 192.5 351.5 128 272 128C192.5 128 128 192.5 128 272C128 351.5 192.5 416 272 416z"/></svg>
+                <input type="text" placeholder="Search our menu..." id="searchinput">
+            </div>
+
+            <div id="searchresults"></div>
+
+        </div>
+    </div>
+
+    <div id="slideshow">
+        <img src="images/slideshow.png" id="ss">
+    </div>
+
+    <div id="menuheader">
+        <button style="margin-left: 131px" id="meb">Menu</button>
+        <button id="gcb">Gift Cards</button>
+    </div>
+
+    <div id="menudiv">
+
+    <div id="menulistcontainer">
+        <div id="menulist">
+            <h3>Fan Favourites</h3>
+            <button class="productbtn" id="trendingbtn">Trending</button>
+            <button class="productbtn" id="smtbtn">Smt</button>
+
+            <h3>Drinks</h3>
+            <button class="productbtn" id="hotcoffeebtn">Hot Coffee</button>
+            <button class="productbtn" id="coldcoffeebtn">Cold Coffee</button>
+            <button class="productbtn" id="matchabtn">Matcha</button>
+            <button class="productbtn" id="hotteabtn">Hot Tea</button>
+            <button class="productbtn" id="iceteabtn">Ice Tea</button>
+            <button class="productbtn" id="waterbtn">Bottled Water</button>
+
+            <h3>Food</h3>
+            <button class="productbtn" id="sandwichbtn">Sandwich</button>
+            <button class="productbtn" id="wrapbtn">Wrap</button>
+            <button class="productbtn" id="croissantbtn">Croissant</button>
+            <button class="productbtn" id="muffinbtn">Muffin</button>
+        </div>
+    </div>
+
+    <div id="menucontainer">
+        <div id="menu">
+            <h1 style="margin-bottom: 48px">Menu</h1>
+
+            <h2 style="margin-bottom: 0px; padding-bottom: 16px">Fan Favorites</h2>
+            <div style="height: 32.8px; width: 100%; background-color: white; border-top: 1px solid #d2d2d2;"></div>
+            
+            <div style="display: flex; align-items: top; height: 184px">
+                <div class="productdiv" id="trendingdiv">
+                    <img class="productimg" src="images/hotcoffee.png">
+                    <p class="productname">Trending</p>
+                    <div class="productmodal" id="trendingmodal"></div>
+                </div>
+                <div class="productdiv" id="smtdiv">
+                    <img class="productimg" src="images/coldcoffee.png">
+                    <p class="productname">Seasonal Special</p>
+                    <div class="productmodal" id="smtmodal"></div>
+                </div>
+            </div>
+
+            <h2 style="margin-bottom: 0px; padding-bottom: 16px">Drinks</h2>
+            <div style="height: 32.8px; width: 100%; background-color: white; border-top: 1px solid #d2d2d2;"></div>
+            
+            <div style="display: flex">
+                <div class="productdiv" id="hotcoffeediv">
+                    <img class="productimg" src="images/hotcoffee.png">
+                    <p class="productname">Hot Coffee</p>
+                    <div class="productmodal" id="hotcoffeemodal"></div>
+                </div>
+                <div class="productdiv" id="coldcoffeediv">
+                    <img class="productimg" src="images/coldcoffee.png">
+                    <p class="productname">Cold Coffee</p>
+                    <div class="productmodal" id="coldcoffeemodal"></div>
+                </div>
+            </div>
+            <div style="display: flex">
+                <div class="productdiv" id="matchadiv">
+                    <img class="productimg" src="images/matcha.png">
+                    <p class="productname">Matcha</p>
+                    <div class="productmodal" id="matchamodal"></div>
+                </div>
+                <div class="productdiv" id="hotteadiv">
+                    <img class="productimg" src="images/hottea.png">
+                    <p class="productname">Hot Tea</p>
+                    <div class="productmodal" id="hotteamodal"></div>
+                </div>
+            </div>
+            <div style="display: flex; align-items: top; height: 184px">
+                <div class="productdiv" id="iceteadiv">
+                    <img class="productimg" src="images/icetea.png">
+                    <p class="productname">Ice Tea</p>
+                    <div class="productmodal" id="iceteamodal"></div>
+                </div>
+                <div class="productdiv" id="waterdiv">
+                    <img class="productimg" src="images/water.png">
+                    <p class="productname">Bottled Water</p>
+                    <div class="productmodal" id="watermodal"></div>
+                </div>
+            </div>
+
+            <h2 style="margin-bottom: 0px; padding-bottom: 16px">Food</h2>
+            <div style="height: 32.8px; width: 100%; background-color: white; border-top: 1px solid #d2d2d2;"></div>
+            
+            <div style="display: flex">
+                <div class="productdiv" id="sandwichdiv">
+                    <img class="productimg" src="images/sandwich.png">
+                    <p class="productname">Breakfast Sandwich</p>
+                    <div class="productmodal" id="sandwichmodal"></div>
+                </div>
+                <div class="productdiv" id="wrapdiv">
+                    <img class="productimg" src="images/wrap.png">
+                    <p class="productname">Breakfast Wrap</p>
+                    <div class="productmodal" id="wrapmodal"></div>
+                </div>
+            </div>
+            <div style="display: flex; align-items: top; height: 184px">
+                <div class="productdiv" id="croissantdiv">
+                    <img class="productimg" src="images/croissant.png">
+                    <p class="productname">Croissant</p>
+                    <div class="productmodal" id="croissantmodal"></div>
+                </div>
+
+                <div class="productdiv" id="muffindiv">
+                    <img class="productimg" src="images/muffin.png">
+                    <p class="productname">Muffin</p>
+                    <div class="productmodal" id="muffinmodal"></div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    </div>
+
+    
+    <div id="giftdiv">
+        <div id="giftcontainer">
+            <div id="gift">
+                <h1>Gift Cards</h1>
+                <p class="gift-subtitle">Give the gift of great coffee. Perfect for any occasion.</p>
+
+                <div id="gift-cards-grid">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+    <div id="cartfooter">
+        <span id="cartfooter-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><path d="M96 96L160 96L194.1 338.8C199.1 370.5 226.5 394 258.6 394L468 394C499.5 394 526.4 371.4 532.1 340.4L568.1 148.4C570.6 135 560.5 122 546.8 122L176 122M258.6 480C240.4 480 225.6 465.2 225.6 447C225.6 428.8 240.4 414 258.6 414C276.8 414 291.6 428.8 291.6 447C291.6 465.2 276.8 480 258.6 480zM468 480C449.8 480 435 465.2 435 447C435 428.8 449.8 414 468 414C486.2 414 501 428.8 501 447C501 465.2 486.2 480 468 480z"/></svg>
+        </span>
+        <span id="cartfooter-text">
+            <span id="cartfooter-count">0 items</span>
+            <span id="cartfooter-label">VIEW ORDER</span>
+        </span>
+        <span id="cartfooter-total" class="price" data-price="0">₹0</span>
+    </div>
+
+    
+    <div id="cart">
+        <div id="cart-header">
+            <h2 id="cart-title">Your Order</h2>
+            <button id="cartcl" aria-label="Close cart">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><path d="M342.6 278l155.6-155.6c8-8 8-21.1 0-29.1s-21.1-8-29.1 0L313.5 249 157.9 93.3c-8-8-21.1-8-29.1 0s-8 21.1 0 29.1L284.4 278 128.8 433.6c-8 8-8 21.1 0 29.1s21.1 8 29.1 0L313.5 307l155.6 155.7c8 8 21.1 8 29.1 0s8-21.1 0-29.1z"/></svg>
+            </button>
+        </div>
+
+        <div id="cart-items">
+            
+        </div>
+
+        <div id="cart-footer">
+            <div id="cart-summary">
+                <span class="cart-summary-label">TOTAL</span>
+                <span id="cart-total-display" class="price cart-total-price" data-price="0">₹0</span>
+            </div>
+            <button id="cart-order-btn">
+                ORDER
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><path d="M278.6 233.4c-12.5 12.5-12.5 32.8 0 45.3L338.7 339 139 339c-17.7 0-32 14.3-32 32s14.3 32 32 32l199.7 0-60.1 60.3c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L471.9 371c12.5-12.5 12.5-32.8 0-45.3L323.9 233.4c-12.5-12.5-32.8-12.5-45.3 0zM512 96L128 96C74.98 96 32 138.1 32 192l0 256c0 53.02 42.98 96 96 96l384 0c53.02 0 96-42.98 96-96l0-256C608 138.1 565 96 512 96z"/></svg>
+            </button>
+        </div>
+    </div>
+
+    <script src="index.js"></script>
+</body>
+
+</html>

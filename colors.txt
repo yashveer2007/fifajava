@@ -1,0 +1,22 @@
+midnight navy: #0C1A2B
+Dark Mahogany Brown — #3B1F1F
+Cream / Warm Ivory — #F4E6C8
+Deep Velvet Red — #7B0F19
+Burgundy / Wine — #5A0E1A
+Antique Gold — #C9A227
+Rich Metallic Gold — #D4AF37
+#800020
+#C39953
+#D4AF37
+
+background - #1e262d | #171f27 | #010820(bg)
+text gray - #495057 | #343a40
+red - #BA0C2F | #ba0c2fcc(darker)
+yellow - #F2C75C
+
+darker yellow - #f5b942
+
+#b51144
+#6d1f37
+#ee7d80
+#efa021

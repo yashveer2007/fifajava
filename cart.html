@@ -1,0 +1,156 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>JavaSip — Your Order</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="cart.css">
+    <link rel="icon" type="image/png" href="images/favicon.png">
+</head>
+<body>
+
+    
+    <header id="cart-page-header">
+        <span id="logospan">
+            <a href="index.html">
+                <img id="logo" src="images/logo.png" alt="JavaSip">
+            </a>
+        </span>
+        <div id="cart-page-header-title">
+            <h1>Checkout</h1>
+        </div>
+    </header>
+
+    
+    <main id="cart-page-main">
+
+        
+        <section id="cp-summary-section">
+            <h2 class="cp-section-title">Order Summary</h2>
+            <div id="cp-items-list">
+                
+            </div>
+            <div id="cp-summary-total-row">
+                <span class="cp-total-label">TOTAL</span>
+                <span id="cp-total-amount">₹0</span>
+            </div>
+        </section>
+
+        
+        <section id="cp-payment-section">
+            <h2 class="cp-section-title">Payment Method</h2>
+
+            
+            <div id="cp-method-picker">
+
+                <label class="cp-method-option" id="cp-method-cash">
+                    <input type="radio" name="paymentMethod" value="cash" checked>
+                    <span class="cp-method-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><path d="M96 336c0 26.5 21.5 48 48 48l448 0c26.5 0 48-21.5 48-48l0-96-544 0 0 96zm0-192l0 48 544 0 0-48c0-26.5-21.5-48-48-48L144 96c-26.5 0-48 21.5-48 48zm256 256c0-17.7 14.3-32 32-32l96 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-96 0c-17.7 0-32-14.3-32-32zm-128 0c0-17.7 14.3-32 32-32l32 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-32 0c-17.7 0-32-14.3-32-32z"/></svg>
+                    </span>
+                    <span class="cp-method-details">
+                        <span class="cp-method-name">Pay at Counter</span>
+                        <span class="cp-method-sub">Cash or card when you collect</span>
+                    </span>
+                </label>
+
+                <label class="cp-method-option" id="cp-method-card">
+                    <input type="radio" name="paymentMethod" value="card">
+                    <span class="cp-method-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><path d="M0 96C0 60.7 28.7 32 64 32l512 0c35.3 0 64 28.7 64 64l0 32L0 128 0 96zM0 192l640 0 0 256c0 35.3-28.7 64-64 64L64 512c-35.3 0-64-28.7-64-64L0 192zm64 160c0 17.7 14.3 32 32 32l64 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-64 0c-17.7 0-32 14.3-32 32zm192 0c0 17.7 14.3 32 32 32l128 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-128 0c-17.7 0-32 14.3-32 32z"/></svg>
+                    </span>
+                    <span class="cp-method-details">
+                        <span class="cp-method-name">Credit / Debit Card</span>
+                        <span class="cp-method-sub">Visa, Mastercard, Amex</span>
+                    </span>
+                </label>
+
+                <label class="cp-method-option" id="cp-method-upi">
+                    <input type="radio" name="paymentMethod" value="upi">
+                    <span class="cp-method-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><path d="M128 32l0 576c0 17.7 14.3 32 32 32l320 0c17.7 0 32-14.3 32-32l0-576c0-17.7-14.3-32-32-32L160 0c-17.7 0-32 14.3-32 32zM320 480a32 32 0 1 1 0 64 32 32 0 1 1 0-64z"/></svg>
+                    </span>
+                    <span class="cp-method-details">
+                        <span class="cp-method-name">UPI / Wallet</span>
+                        <span class="cp-method-sub">PhonePe, GPay, Paytm</span>
+                    </span>
+                </label>
+
+            </div>
+
+            
+            <div id="cp-card-fields">
+                <div class="cp-field-group">
+                    <label class="cp-field-label" for="cp-card-number">CARD NUMBER</label>
+                    <input type="text" id="cp-card-number" class="cp-field-input"
+                           placeholder="1234 5678 9012 3456" maxlength="19" autocomplete="cc-number">
+                    <p class="cp-field-error" id="cp-card-number-err"></p>
+                </div>
+                <div class="cp-field-row">
+                    <div class="cp-field-group">
+                        <label class="cp-field-label" for="cp-card-expiry">EXPIRY</label>
+                        <input type="text" id="cp-card-expiry" class="cp-field-input"
+                               placeholder="MM / YY" maxlength="7" autocomplete="cc-exp">
+                        <p class="cp-field-error" id="cp-card-expiry-err"></p>
+                    </div>
+                    <div class="cp-field-group">
+                        <label class="cp-field-label" for="cp-card-cvv">CVV</label>
+                        <input type="password" id="cp-card-cvv" class="cp-field-input"
+                               placeholder="•••" maxlength="4" autocomplete="cc-csc">
+                        <p class="cp-field-error" id="cp-card-cvv-err"></p>
+                    </div>
+                </div>
+                <div class="cp-field-group">
+                    <label class="cp-field-label" for="cp-card-name">NAME ON CARD</label>
+                    <input type="text" id="cp-card-name" class="cp-field-input"
+                           placeholder="As printed on card" autocomplete="cc-name">
+                    <p class="cp-field-error" id="cp-card-name-err"></p>
+                </div>
+            </div>
+
+            
+            <div id="cp-upi-fields">
+                <div class="cp-field-group">
+                    <label class="cp-field-label" for="cp-upi-id">UPI ID</label>
+                    <input type="text" id="cp-upi-id" class="cp-field-input"
+                           placeholder="yourname@upi">
+                    <p class="cp-field-error" id="cp-upi-id-err"></p>
+                </div>
+            </div>
+
+            
+            <div id="cp-save-row">
+                <input type="checkbox" id="cp-save-payment" checked>
+                <label for="cp-save-payment" class="cp-save-label">Save payment info to my account</label>
+            </div>
+
+            <p class="cp-field-error" id="cp-global-error"></p>
+
+            <button id="cp-place-order-btn">PLACE ORDER</button>
+
+        </section>
+
+    </main>
+
+    
+    <div id="cp-overlay">
+        <div id="cp-overlay-card">
+            <div id="cp-check-circle">
+                <svg id="cp-check-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+                    <circle class="cp-check-circle-bg" cx="26" cy="26" r="25" fill="none"/>
+                    <path class="cp-check-tick" fill="none" d="M14 27 l8 8 l16-16"/>
+                </svg>
+            </div>
+            <h1 id="cp-overlay-title">ORDER COMPLETE</h1>
+            <p id="cp-overlay-sub">Collect your order at the counter</p>
+            <div id="cp-overlay-timer">
+                <span id="cp-overlay-secs">5</span>
+                <span> — returning to menu</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="cart.js"></script>
+</body>
+
+</html>
